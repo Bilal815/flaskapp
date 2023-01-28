@@ -15,11 +15,11 @@ def index():
     return render_template("index.html") 
 
 
-@app.route("/model", methods=['post','get'])
+@app.route("/model", methods=['POST'])
 def model():
     num = np.int64(request.form['height'])
     result = loaded_model.predict([[num]])
     return f"<h1>Your Height: {num} & predicted Weight <label style='color:red'>{result[0]}</label></h1>"   
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
